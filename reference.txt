@@ -1,0 +1,3 @@
+REFERENCES:
+
+Date function in PHP and MySQL: https://www.youtube.com/watch?v=O21cIqYQvq8
