@@ -29,5 +29,24 @@
         </div>
     </div>
 </div>
+<div>
+<?php
+date_default_timezone_set('America/Chicago');
+//Here we define out main variables
+$welcome_string="Welcome!";
+$numeric_date=date("G");
+
+//Start conditionals based on military time
+if($numeric_date>=0&&$numeric_date<=11)
+$welcome_string="Good Morning!";
+else if($numeric_date>=12&&$numeric_date<=17)
+$welcome_string="Good Afternoon!";
+else if($numeric_date>=18&&$numeric_date<=23)
+$welcome_string="Good Evening!";
+
+//Display our greeting
+echo "$welcome_string";
+?>
+</div>
 </body>
 </html>
