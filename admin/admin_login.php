@@ -1,11 +1,15 @@
 <?php 
     require_once '../load.php';
+
+
     $ip = $_SERVER['REMOTE_ADDR']; // $_ is a built-in variable
 
     if(isset($_POST['submit'])){
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
         
+
+    
 
         if(!empty($username) && !empty($password)){
             //log in user
@@ -14,6 +18,15 @@
             $message = 'Please fill out the required field';
         }
     }
+            
+    // if(mysqli_num_rows($result) > 0){
+    //     $row = mysqli_fetch_object($result);
+    // }else{
+    //     $_SESSION["error"]
+    // }
+
+    
+  
 
 ?>
 

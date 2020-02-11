@@ -6,6 +6,8 @@
 function login($username, $password, $ip){
 
    $pdo = Database::getInstance()->getConnection();
+   $attempt = 0;
+   if($attempt<4){
    //Check instance
     $check_exist_query = 'SELECT COUNT(*) FROM tbl_users WHERE uname= :username AND pword= :password'; 
     $user_set = $pdo->prepare($check_exist_query);
@@ -16,10 +18,7 @@ function login($username, $password, $ip){
         )
     );
 
-
-
-    
-
+   
 
 
     if($user_set->fetchColumn()>0){
@@ -36,7 +35,7 @@ function login($username, $password, $ip){
             )
         );
 
-        
+
         //TODO: finish the folowing lines so that when user logged in, the user_ip column updated by the $ip
         while($found_user = $user_check->fetch(PDO::FETCH_ASSOC)){
             $id = $found_user['ID'];
@@ -62,9 +61,17 @@ function login($username, $password, $ip){
 
 
     }else{
+       
        $message = 'User does not exist!';
+
+       $attempt++;
+       echo ("This is attempt $attempt out of 3 ");
+        
+      
     }
     return $message;
+}
+
 }
 
 ?>
