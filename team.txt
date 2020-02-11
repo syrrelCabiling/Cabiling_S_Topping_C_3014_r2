@@ -1,4 +1,4 @@
 ﻿TEAM:
 
-Syrrel Cabiling
-Courtney Topping
+Syrrel Cabiling (https://github.com/syrrelCabiling)
+Courtney Topping (https://github.com/CourtneyTopping)
