@@ -49,6 +49,25 @@
             <div class="form">
                 <h2 class="mx-auto">Login Page</h2>
                 <?php echo !empty($message)? $message: ''; ?>
+                <div>
+<?php
+date_default_timezone_set('America/Chicago');
+//Here we define out main variables
+$welcome_string="Welcome!";
+$numeric_date=date("G");
+
+//Start conditionals based on military time
+if($numeric_date>=0&&$numeric_date<=11)
+$welcome_string="Good Morning!";
+else if($numeric_date>=12&&$numeric_date<=17)
+$welcome_string="Good Afternoon!";
+else if($numeric_date>=18&&$numeric_date<=23)
+$welcome_string="Good Evening!";
+
+//Display our greeting
+echo "$welcome_string";
+?>
+</div>
                 <form action="admin_login.php" method="post" class="px-4 py-3 mx-auto shadow rounded"> <!-- Post is ideal to use here so information won't be exposed-->
                 <div class="form-group">
                     <label for="">Username:</label>

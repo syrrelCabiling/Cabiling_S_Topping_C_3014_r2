@@ -1,4 +1,5 @@
 REFERENCES:
 
+Display Message Based on Time of Day: https://gist.github.com/introwit/8dbe76dee57033bfce1b
 Basic Date functionality in PHP and MySQL: https://www.youtube.com/watch?v=O21cIqYQvq8
  Login Attempt Limit Form in PHP using MySQL Database (https://www.youtube.com/watch?v=kvVsS2_TF8M)
