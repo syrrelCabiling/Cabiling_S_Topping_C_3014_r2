@@ -19,13 +19,16 @@
         <div class="col-lg-6 mx-auto">
                 <!-- Timestamp here through php -->
                     <?php
+                    //$logintime = "UPDATE tbl_users SET use_time = now() where uname = '$username'";
+                    // mysqli_query($conn, $logintime);
+                    
                     date_default_timezone_set('America/New_York');
                     $tstamp = time(); //literally just fetching the timestamp straight from the db
-
+            
                     echo "Last login session: ".date('h:i A, l - d M Y', $tstamp)."<br>";?>
                 <!-- End of Timestamp -->
 
-            <h2>Welcome to your Dashboard! Admin 1</h2>
+            <h2>Welcome to your Dashboard Admin! </h2>
         </div>
     </div>
 </div>

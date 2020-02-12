@@ -6,8 +6,8 @@
 function login($username, $password, $ip){
 
    $pdo = Database::getInstance()->getConnection();
-   $attempt = 0;
-   if($attempt<4){
+   $attempt = 0; //Times of failed logged in attempts as of now - it will increment by 1 every wrong login
+   if($attempt<4){ //3 failed logins will result in a temporary ban.
    //Check instance
     $check_exist_query = 'SELECT COUNT(*) FROM tbl_users WHERE uname= :username AND pword= :password'; 
     $user_set = $pdo->prepare($check_exist_query);
@@ -19,6 +19,20 @@ function login($username, $password, $ip){
     );
 
    
+    // $_SESSION['username'] = $_POST['username']; //an attempt to track the time of last login session
+    // $username = $_SESSION["username"];
+
+
+    // $last_login_sesh = 'SELECT tbl_users FROM use_time WHERE uname = :username';
+    // list($lastlogin) = mysql_fetch_row($last_login_sesh);
+    // // Set session variable
+    // $_SESSION['lastlogin'] = $lastlogin;
+
+    // // Update New LastLogin
+    // $updatelog = 'UPDATE tbl_users SET lastlogin = time() WHERE uname = :username ';
+
+    // mysql_close($db);
+
 
 
     if($user_set->fetchColumn()>0){
