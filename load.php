@@ -14,6 +14,6 @@ require_once ABSPATH.'/config/database.php';
 require_once ADMIN_SCRIPT_PATH.'/read.php'; //simplifying the paths here
 require_once ADMIN_SCRIPT_PATH.'/login.php'; //simplifying the paths here
 require_once ADMIN_SCRIPT_PATH.'/functions.php'; //simplifying the paths here
-//require_once ADMIN_SCRIPT_PATH.'/timestamp.php'; //simplifying the paths here
+// require_once ADMIN_SCRIPT_PATH.'/session.php'; //simplifying the paths here
 
 
