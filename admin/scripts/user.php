@@ -17,6 +17,7 @@ function createUser($fname, $username, $email){
 
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
     $random_pword = random_pw($chars, 8);
+    $to = $email;
 
     $create_user_set = $pdo->prepare($create_user_query);
     $create_user_result = $create_user_set->execute(
@@ -77,7 +78,12 @@ function createUser($fname, $username, $email){
         //Set the subject line
         $mail->Subject = 'Your New Password!!';
         
-        $mail->Body='<h1 align=center>Password: `$random_pw`</h1>';
+        $mail->Body='
+        Hi there! Here is your new password and credentials!
+        Username: '.$fname.'
+        Password: '.$random_pword.'
+        Sign Back In: MAC http://localhost:8888/Cabiling_S_Topping_C_3014_r2/admin/admin_login.php 
+        WINDOWS http://localhost/Cabiling_S_Topping_C_3014_r2/admin/admin_login.php ';
         
         
         if(!$mail->send()){
@@ -88,7 +94,7 @@ function createUser($fname, $username, $email){
         
     
         
-        return $result;
+        //return $result;
 
 
 
