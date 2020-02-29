@@ -77,7 +77,7 @@ function createUser($fname, $username, $email){
         //Set the subject line
         $mail->Subject = 'Your New Password!!';
         
-        $mail->Body='<h1 align=center>Password: `$random_pw`</h1>';
+        $mail->Body='.$password. ';
         
         
         if(!$mail->send()){
