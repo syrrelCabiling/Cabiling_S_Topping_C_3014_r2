@@ -1,30 +1,23 @@
 <?php
 
-
 function login($username, $password, $ip){
 
    $pdo = Database::getInstance()->getConnection();
-   $attempt = 0; //Times of failed logged in attempts as of now - it will increment by 1 every wrong login
-   if($attempt<4){ //3 failed logins will result in a temporary ban.
    //Check instance
-    $check_exist_query = 'SELECT COUNT(*) FROM tbl_users WHERE uname= :username AND pword= :password'; 
+    $check_exist_query = 'SELECT COUNT(*) FROM tbl_user WHERE user_name= :username'; 
     $user_set = $pdo->prepare($check_exist_query);
     $user_set->execute(
         array(
             ':username' => $username,
-            ':password'=>$password
         )
     );
 
-
-
-
     if($user_set->fetchColumn()>0){
         //user exist
-       $message = 'User Exists!';
+        //$message = 'User Exists!';
 
-        $get_user_query = 'SELECT * FROM tbl_users WHERE uname = :username;';
-        $get_user_query .= ' AND pword = :password';
+        $get_user_query = 'SELECT * FROM tbl_user WHERE user_name = :username;';
+        $get_user_query .= ' AND user_pass = :password';
         $user_check = $pdo->prepare($get_user_query);
         $user_check->execute(
             array(
@@ -36,18 +29,18 @@ function login($username, $password, $ip){
 
         //TODO: finish the folowing lines so that when user logged in, the user_ip column updated by the $ip
         while($found_user = $user_check->fetch(PDO::FETCH_ASSOC)){
-            $id = $found_user['ID'];
+            $id = $found_user['user_id'];
             $message = 'You just logged in!';
 
-             //creating a locker for the user
-             $_SESSION['ID'] = $id;
-             $_SESSION['uname'] = $found_user['user_fname'];
- 
+            //creating a locker for the user
+            $_SESSION['user_id'] = $id;
+            $_SESSION['user_name'] = $$found_user['user_fname'];
+
+
             
-            $update_query = 'UPDATE tbl_users SET user_ip = :ip WHERE ID = :id'; //instead of diaplying the id, display the ip instead
+            $update_query = 'UPDATE tbl_user SET user_ip = :ip WHERE user_id = :id'; //instead of diaplying the id, display the ip instead
             $update_set = $pdo->prepare($update_query);
-        //    echo $update_query; 
-        //    exit;
+           //echo $update_query; exit;
             
             $update_set->execute(
                array(
@@ -59,25 +52,26 @@ function login($username, $password, $ip){
 
         if(isset($id)){
             redirect_to('index.php');
-
         }
 
 
     }else{
-       
        $message = 'User does not exist!';
-
-       $attempt++;
-       echo ("This is attempt $attempt out of 3 ");
-        
-      
     }
     return $message;
 }
-}
+
+
+
+?>
+
+<?php 
+
+// function login($username, $password, $ip){
+// } THIS IS ALREADY AT THE TOP
 
 function confirm_logged_in(){ // storing login data into the user locker/server
-    if(!isset($_SESSION['ID'])){
+    if(!isset($_SESSION['user_id'])){
         redirect_to('admin_login.php');
     }
 }
@@ -86,10 +80,4 @@ function logout(){ //destroying the login data from the user locker/server
     session_destroy();
     redirect_to('admin_login.php');
 }
-
-
-
-
 ?>
-
-

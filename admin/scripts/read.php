@@ -12,6 +12,23 @@ function getAll($tbl) {
     }
 }
 
+function getSingleMovie($tbl, $col, $id){
+    //TODO: finish the function based on getAll, this time only return one movie's field
+
+    $pdo = Database::getInstance()->getConnection();
+    $query = "SELECT * FROM $tbl WHERE $col = $id";
+    //ORRRRR $query = 'SELECT * FROM '.$tbl.' WHERE '$col' = '$id;
+
+    $results = $pdo->query($query);
+
+    if($results){
+        return $results;
+    }else{
+        return 'There was a problem accessing this info';
+    }
+
+}
+
 function getMoviesByFilter($args){ //JOINING 3 TABLES AND LINKING THEM TOGETHER
     $pdo = Database::getInstance()->getConnection();
     $filterQuery = 'SELECT * FROM '.$args['tbl'].' AS t, '.$args['tbl2'].' AS t2, '.$args['tbl3'].' AS t3';

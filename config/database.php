@@ -4,7 +4,7 @@ class Database
     // Note: specify your own database credentials
     private $host = "localhost";
 
-    private $db_name = "db_login";
+    private $db_name = "db_movies";
 
     private $username = "root";
 
@@ -55,6 +55,6 @@ class Database
         return self::$instance;
     }
 }
-?>
 
+?>
 

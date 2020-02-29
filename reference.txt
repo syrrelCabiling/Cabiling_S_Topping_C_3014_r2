@@ -12,4 +12,5 @@ Password Genorator: https://hugh.blog/2012/04/23/simple-way-to-generate-a-random
 Email Password Tutorial: https://www.daniweb.com/programming/web-development/threads/434807/php-how-to-send-password-to-email
 
 General Login/Creating user Tutorials: https://code-boxx.com/php-user-registration-form-email-verification/
-                                       
+PHPMailer: https://github.com/PHPMailer/PHPMailer
+Sending email: https://www.sitepoint.com/sending-emails-php-phpmailer/
