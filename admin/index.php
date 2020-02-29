@@ -1,6 +1,6 @@
 <?php 
     require_once '../load.php';
-
+    confirm_logged_in();
 
 ?>
 
@@ -11,6 +11,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -25,15 +27,12 @@
                     date_default_timezone_set('America/New_York');
                     $tstamp = time(); //literally just fetching the timestamp straight from the db
             
-                    echo "Last login session: ".date('h:i A, l - d M Y', $tstamp)."<br>";?>
+                    echo "Last login session: ".date('h:i A, l - d M Y', $tstamp)."<br>";?>  
                 <!-- End of Timestamp -->
 
-            <h2>Welcome to your Dashboard Admin! </h2>
-        </div>
-    </div>
-</div>
-<div>
-<?php
+                <h2>Welcome! <?php echo $_SESSION['uname'];?></h2>
+               
+                <?php
 date_default_timezone_set('America/Chicago');
 //Here we define out main variables
 $welcome_string="Welcome!";
@@ -49,7 +48,14 @@ $welcome_string="Good Evening!";
 
 //Display our greeting
 echo "$welcome_string";
-?>
+?>    
+<a href="admin_login.php"><button class="btn btn-danger btn-sm mt-5 float-right">LOGOUT</button></a>
+
+        </div>
+    </div>
+</div>
+
+<div>
 </div>
 </body>
 </html>

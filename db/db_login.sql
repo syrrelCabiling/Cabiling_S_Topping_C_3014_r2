@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 12, 2020 at 03:11 AM
+-- Generation Time: Feb 29, 2020 at 03:15 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -28,8 +28,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_users` (
   `ID` int(11) NOT NULL,
+  `user_fname` varchar(100) NOT NULL,
   `uname` varchar(10) NOT NULL,
   `pword` varchar(10) NOT NULL,
+  `hash` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `use_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_ip` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -38,8 +41,8 @@ CREATE TABLE `tbl_users` (
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`ID`, `uname`, `pword`, `use_time`, `user_ip`) VALUES
-(1, 'admin', '1234', '2020-02-09 15:06:13', '0');
+INSERT INTO `tbl_users` (`ID`, `user_fname`, `uname`, `pword`, `hash`, `email`, `use_time`, `user_ip`) VALUES
+(1, '', 'admin', '1234', 0, '', '2020-02-09 15:06:13', '0');
 
 --
 -- Indexes for dumped tables

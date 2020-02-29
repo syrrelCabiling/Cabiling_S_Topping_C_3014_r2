@@ -1,34 +1,19 @@
 <?php 
     require_once '../load.php';
 
-
-    $ip = $_SERVER['REMOTE_ADDR']; // $_ is a built-in variable
-
+    $ip = $_SERVER['REMOTE_ADDR'];
 
     if(isset($_POST['submit'])){
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
-        
-
-    
 
         if(!empty($username) && !empty($password)){
-            //log in user
+            //Log user in
             $message = login($username, $password, $ip);
         }else{
             $message = 'Please fill out the required field';
         }
     }
-            
-    // if(mysqli_num_rows($result) > 0){
-    //     $row = mysqli_fetch_object($result);
-    // }else{
-    //     $_SESSION["error"]
-    // }
-
-    
-  
-
 ?>
 
 
@@ -47,7 +32,7 @@
     <div class="row">
         <div class="col-lg-6 mx-auto">
             <div class="form">
-                <h2 class="mx-auto">Login Page</h2>
+                <h2 class="mx-auto">Login</h2>
                 <?php echo !empty($message)? $message: ''; ?>
                 <div>
 <?php
@@ -76,7 +61,9 @@ echo "$welcome_string";
                     <label for="">Password:</label>
                     <input type="password" name="password" id="password" value="" class="form-control">
 
-                    <button name="submit" class="btn btn-danger mt-2">SUBMIT</button>
+                    <button name="submit" class="btn btn-danger mt-2">LOGIN</button>
+
+                    <p>Don't have an account?<a href="admin_createuser.php">SIGN UP</a></span></p>
                     </div>
                 </form>
             </div>
