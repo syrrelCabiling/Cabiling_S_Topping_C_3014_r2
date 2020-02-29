@@ -1,4 +1,4 @@
-<?php 
+<div id="messages"><?php 
 require_once '../load.php';
 
 confirm_logged_in();
@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
     }
 }
 
-?>
+?></div>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,8 +33,7 @@ if(isset($_POST['submit'])){
         <input type="text" name="fname" value=""><br><br>
         <label>Username</label>
         <input type="text" name="username" value=""><br><br>
-        <label>Don't worry about your password for now. We'll email one for you!</label>
-        <input type="text" name="password" value="" disabled><br><br>
+        <label>Don't worry about your password for now. We'll email one for you!</label><br><br>
         <label>Email</label>
         <input type="email" name="email" value=""><br><br>
         <button name="submit">Create User</button>

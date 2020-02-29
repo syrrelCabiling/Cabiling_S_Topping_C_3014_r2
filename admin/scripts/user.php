@@ -77,7 +77,11 @@ function createUser($fname, $username, $email){
         //Set the subject line
         $mail->Subject = 'Your New Password!!';
         
-        $mail->Body='<h1 align=center>Password: `$random_pw`</h1>';
+        $mail->Body='
+        Hi there! Here is your new passord and credentials!
+        Username: `$username`
+        Password: `$random_pw`
+        Sign Back In: http://localhost:8888/Cabiling_S_Topping_C_3014_r2/admin/index.php';
         
         
         if(!$mail->send()){
@@ -88,7 +92,7 @@ function createUser($fname, $username, $email){
         
     
         
-        return $result;
+       // return $result;
 
 
 
